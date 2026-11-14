@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554">
+  <title>WorkDesk — Office Task Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="out">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close menu">×</button>
+      <div class="brand">
+        <div class="brand-mark">W</div>
+        <div><strong>WorkDesk</strong><small>Vinayaga Associates</small></div>
+      </div>
+      <div class="profile-mini">
+        <div class="avatar" id="avatar">A</div>
+        <div><strong id="sideName">—</strong><small id="sideRole">—</small></div>
+      </div>
+      <nav id="navigation" aria-label="Main navigation">
+        <button class="nav-link active" data-page="overview">▦ <span>Overview</span></button>
+        <button class="nav-link" data-page="tasks">☷ <span>My Tasks</span></button>
+        <button class="nav-link admin-only" data-page="staff">♙ <span>Staff Management</span></button>
+        <button class="nav-link admin-only" data-page="alltasks">▤ <span>All Staff Tasks</span></button>
+        <button class="nav-link admin-only" data-page="accounttasks">▣ <span>Account Tasks</span></button>
+      </nav>
+      <button class="logout" id="logoutBtn">↪ <span>Sign out</span></button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+        <div><span class="eyebrow">WORKSPACE</span><h1 id="pageTitle">Overview</h1></div>
+        <div class="top-actions"><span class="today" id="todayLabel"></span><div class="avatar small" id="topAvatar">A</div></div>
+      </header>
+      <div id="banner" class="banner hidden" role="alert"></div>
+      <section id="loginView" class="login-wrap">
+        <div class="login-card">
+          <div class="login-brand"><span class="brand-mark large">W</span><span><strong>WorkDesk</strong><small>Vinayaga Associates</small></span></div>
+          <p class="eyebrow">WELCOME TO YOUR WORKSPACE</p>
+          <h2>Sign in to WorkDesk</h2>
+          <p class="muted">Organize, track and review daily work.</p>
+          <form id="loginForm">
+            <label for="username">Username</label>
+            <input id="username" autocomplete="username" placeholder="Enter your username" required>
+            <label for="password">Password</label>
+            <input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+            <p class="error" id="loginError" aria-live="polite"></p>
+            <button class="primary full" type="submit">Sign in →</button>
+          </form>
+          <form id="setupForm" class="hidden">
+            <label for="sName">Admin full name</label>
+            <input id="sName" required>
+            <label for="sUser">Admin username</label>
+            <input id="sUser" autocomplete="off" required>
+            <label for="sPass">Password (min 6 characters)</label>
+            <input id="sPass" type="password" autocomplete="new-password" minlength="6" required>
+            <p class="error" id="setupError" aria-live="polite"></p>
+            <button class="primary full" type="submit">Create admin account</button>
+          </form>
+          <button class="text-btn" id="toggleSetup" type="button">First time here? Set up admin</button>
+        </div>
+        <div class="login-art">
+          <div class="art-orb orb-one"></div><div class="art-orb orb-two"></div>
+          <div class="art-content"><span class="pill light-pill">PLAN · TRACK · COMPLETE</span><h2>Make every<br>workday count.</h2><p>Stay focused, keep tasks moving and make progress visible.</p>
+            <div class="art-preview" aria-hidden="true"><div class="preview-heading"><span>TEAM SNAPSHOT</span><b>● LIVE</b></div><div class="preview-row"><span class="preview-icon">✓</span><span><strong>Daily work, organized</strong><small>Tasks and priorities in one place</small></span></div><div class="preview-row"><span class="preview-icon">↗</span><span><strong>Progress made visible</strong><small>Keep your team moving forward</small></span></div></div>
+          </div>
+        </div>
+      </section>
+      <section id="appView" class="hidden">
+        <div class="welcome-row">
+          <div><p class="eyebrow">YOUR WORKSPACE</p><h2 id="welcomeTitle">Welcome</h2><p class="muted" id="welcomeSubtitle"></p></div>
+        </div>
+        <div id="view"></div>
+      </section>
+    </main>
+  </div>
+  <dialog id="dlg">
+    <form id="dlgForm">
+      <h3 id="dlgTitle"></h3>
+      <div id="dlgBody"></div>
+      <p class="error" id="dlgErr" aria-live="polite"></p>
+      <div class="dlg-actions">
+        <button type="button" class="ghost" id="dlgCancel">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+  <script type="module" src="workdesk.js"></script>
+</body>
+</html>
